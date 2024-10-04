@@ -1,3 +1,8 @@
 return {
-  { 'RaafatTurki/hex.nvim' },
+  {
+    'RaafatTurki/hex.nvim',
+    config = function()
+      require('hex').setup()
+    end,
+  },
 }
