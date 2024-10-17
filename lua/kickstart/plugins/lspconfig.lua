@@ -197,6 +197,8 @@ return {
 
         ocamllsp = {},
         clangd = {},
+        ts_ls = {},
+        cssls = {},
       }
 
       -- Ensure the servers and tools above are installed
