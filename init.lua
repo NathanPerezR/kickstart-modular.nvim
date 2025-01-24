@@ -105,5 +105,9 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+local o = vim.o
+
+o.expandtab = true
+o.smartindent = true
+o.tabstop = 2
+o.shiftwidth = 2

@@ -27,11 +27,11 @@ require('lazy').setup({
 
   require 'kickstart/plugins/which-key',
 
+  require 'kickstart/plugins/debug',
+
   require 'kickstart/plugins/telescope',
 
   require 'kickstart/plugins/lspconfig',
-
-  require 'kickstart/plugins/conform',
 
   require 'kickstart/plugins/cmp',
 
