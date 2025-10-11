@@ -23,6 +23,7 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'vadimcn/vscode-lldb',
   },
   keys = function(_, keys)
     local dap = require 'dap'
@@ -64,6 +65,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'cpptools',
       },
     }
 
@@ -101,5 +103,34 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+
+    local codelldb_path = vim.fn.stdpath("data") .. '/mason/packages/codelldb/extension/adapter/codelldb'
+
+    -- C++ (cpptools) DAP setup
+    dap.adapters.lldb = {
+    type = 'server',
+    port = "${port}",
+    executable = {
+      command = codelldb_path,
+      args = {"--port", "${port}"},
+      },
+    }
+
+    dap.configurations.cpp = {
+      {
+        name = 'Launch with LLDB',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      },
+    }
+
+    dap.configurations.c = dap.configurations.cpp
+    dap.configurations.rust = dap.configurations.cpp
   end,
 }
