@@ -206,6 +206,7 @@ return {
         clangd = {},
         ts_ls = {},
         cssls = {},
+        omnisharp_mono = {}
       }
 
       -- Ensure the servers and tools above are installed
